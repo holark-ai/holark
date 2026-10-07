@@ -1,0 +1,17 @@
+.stack {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 6px;
+}
+
+.item {
+  display: inline-flex;
+  margin-left: -6px;
+}
+
+.item:first-child { margin-left: 0; }
+
+.item > * {
+  border: 2px solid var(--color-surface);
+  border-radius: 50%;
+}

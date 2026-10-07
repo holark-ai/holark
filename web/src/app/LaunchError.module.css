@@ -1,0 +1,4 @@
+.page { min-height: 100vh; display: grid; place-items: center; padding: 32px; }
+.panel { max-width: 480px; padding: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-sm); }
+.panel h1 { margin: 0 0 12px; font-size: 24px; letter-spacing: -0.03em; }
+.panel p { margin: 0; color: var(--color-text-muted); }

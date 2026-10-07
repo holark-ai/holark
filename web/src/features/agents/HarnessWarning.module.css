@@ -1,0 +1,12 @@
+.warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 8px 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.warning svg { flex: none; width: 15px; height: 15px; margin-top: 2px; color: var(--color-warning, #b8860b); }

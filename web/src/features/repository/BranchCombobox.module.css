@@ -1,0 +1,57 @@
+.trigger { display: flex; align-items: center; gap: 7px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text); font: inherit; font-weight: 600; cursor: pointer; }
+.trigger:hover { background: var(--color-surface-hover); }
+.trigger:disabled { cursor: default; opacity: 0.65; }
+.header { height: 36px; padding: 0 4px; border-color: transparent; font-weight: 400; font-size: 12px; }
+.detail { width: 100%; min-width: 0; min-height: 56px; justify-content: space-between; padding: 9px; border-color: var(--color-border); background: var(--color-surface-subtle); text-align: left; }
+.detailCopy { display: grid; min-width: 0; gap: 2px; }
+.label { color: var(--color-text-soft); font-size: 10px; font-weight: 400; line-height: 1.2; letter-spacing: 0.02em; text-transform: uppercase; }
+.value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.detail .value { font-size: 14px; font-weight: 650; line-height: 1.4; }
+.branchIcon { width: 17px; height: 17px; flex: none; }
+.shortcut { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: auto; letter-spacing: .02em; border: 1px solid var(--appearance-border, #dfe2e8); border-radius: 6px; padding: 3px 6px; background: rgb(255 255 255 / .72); color: var(--appearance-soft, #777c83); font: 10px/1.3 var(--font-sans); white-space: nowrap; }
+:global(:root[data-theme='dark']) .shortcut { background: var(--color-surface-raised); }
+.chevron { width: 14px; height: 14px; flex: none; color: var(--color-text-soft); transition: transform 100ms ease; }
+.trigger[aria-expanded='true'] .chevron { transform: rotate(180deg); }
+.positioner { z-index: 130; outline: none; }
+.popup { width: max(560px, var(--anchor-width)); max-width: var(--available-width); overflow: hidden; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-surface); color: var(--color-text); box-shadow: none; transform-origin: var(--transform-origin); }
+.timelinePopup { border-color: var(--color-border-strong); box-shadow: var(--shadow-hover); }
+.timelinePopup .searchWrap { border-bottom-color: var(--color-border-strong); }
+.searchWrap { margin: 0 5px; padding: 5px 9px; border-bottom: 1px solid var(--color-border); box-shadow: none; }
+.search { width: 100%; min-width: 0; padding: 8px 0; border: 0; outline: none; background: transparent; box-shadow: none; color: var(--color-text); font: inherit; font-size: 12px; }
+.search::placeholder { color: var(--color-text-muted); }
+.search:focus, .search:focus-visible { outline: none; box-shadow: none; }
+.status, .empty { padding: 8px 10px; color: var(--color-text-muted); font-size: 11px; }
+.status { border-bottom: 1px solid var(--color-border); }
+.statusError { color: var(--color-danger); }
+.list { max-height: min(380px, max(80px, calc(var(--available-height) - 90px))); overflow: auto; padding: 5px; outline: none; }
+.item { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; min-height: 36px; padding: 6px 8px 6px 15px; outline: none; color: var(--color-text-muted); font-size: 12px; font-weight: 400; cursor: pointer; user-select: none; }
+.branchCopy { display: grid; gap: 3px; min-width: 0; }
+.branchName { display: block; font-weight: 600; line-height: 1.5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.defaultLabel { flex: none; color: var(--color-text-muted); font-size: 10px; font-weight: 400; }
+.item[data-highlighted], .item[data-selected] { color: var(--color-text); }
+.item::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--color-text); opacity: 0; }
+.item:hover::before, .item[data-highlighted]::before { opacity: 0.25; }
+.item[data-selected]::before { opacity: 1; }
+.item[data-highlighted] .commitLine, .item[data-highlighted] .commitLine code, .item[data-highlighted] .author, .item[data-highlighted] time { color: var(--color-text); }
+.item:focus-visible { outline: 1px solid var(--color-border-strong); outline-offset: -1px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { .chevron { transition: none; } }
+
+.timeline { height: 36px; width: 100%; border-color: transparent; font-size: 13px; font-weight: 500; }
+.timeline .value { font-size: 14px; font-weight: 700; }
+.commitLine { display: flex; align-items: baseline; gap: 5px; min-width: 0; color: var(--color-text-muted); font-size: 11px; line-height: 1.5; }
+.commitLine code { flex: none; color: var(--color-text-soft); font: 10px var(--font-mono); }
+.commitLink { flex: none; padding: 0; border: 0; background: transparent; line-height: inherit; cursor: pointer; }
+.commitLink:hover code { color: var(--color-text); text-decoration: underline; text-underline-offset: 2px; }
+.separator { flex: none; color: var(--color-text-soft); }
+.subject { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.author { flex: none; color: var(--color-text-soft); white-space: nowrap; }
+.commitLine { overflow: hidden; }
+.branchHeading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; min-width: 0; }
+.branchHeading time { flex: none; margin-left: auto; color: var(--color-text-soft); font-size: 10px; font-weight: 400; white-space: nowrap; }
+
+.triggerWrap { position: relative; display: flex; align-items: center; min-width: 0; }
+.triggerWrap .trigger { flex: 1; min-width: 0; padding-right: 24px; }
+.triggerWrap .chevron { position: absolute; right: 6px; }
+.branchIdentity { display: flex; align-items: center; gap: 5px; min-width: 0; }
+.triggerWrap .base { height: 28px; padding: 4px 24px 4px 8px; border-color: transparent; background: var(--color-surface-subtle); font-size: 12px; font-weight: 500; }

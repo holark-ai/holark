@@ -1,0 +1,3 @@
+.indicator { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 1; border-radius: 999px; background: var(--appearance-surface, #fff); box-shadow: 0 1px 5px var(--appearance-shadow, #222a3312); transition: transform 240ms cubic-bezier(.22,.8,.25,1), width 240ms cubic-bezier(.22,.8,.25,1), height 240ms ease; }
+.indicator[data-variant='underline'] { border-radius: 0; background: var(--color-accent); box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .indicator { transition: none; } }

@@ -1,0 +1,3 @@
+Remove {{artifact_path}}, then inspect git status and git diff. Finish and commit the remaining rebase changes, and run relevant checks. Do not push or publish.
+
+When you are finished, signal completion by recreating the empty file at {{artifact_path}}. This gitignored marker lets Holark know that the rebase is complete. Leave it absent if you are asking for guidance, and do not commit it.

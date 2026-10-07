@@ -1,0 +1,43 @@
+.page { min-height: 100%; padding-bottom: 0; }
+.page:focus-visible, .page :focus-visible, .branchPopup :focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-height: 36px; margin-bottom: 14px; }
+.content { display: grid; grid-template-columns: minmax(0, 1fr); }
+.contentWithHistory { grid-template-columns: 380px minmax(0, 1fr); gap: 0; }
+.history { min-width: 0; }
+.contentWithHistory .history { padding-right: 22px; border-right: 1px solid var(--color-border); }
+.stickyHistory { position: sticky; top: 0; align-self: start; display: flex; flex-direction: column; height: 100dvh; box-sizing: border-box; padding-bottom: 24px; }
+.files { min-width: 0; padding-bottom: 104px; }
+.contentWithHistory .files { padding-left: 28px; }
+.filesTop { display: flex; align-items: center; gap: 8px; min-height: 36px; margin-bottom: 18px; }
+.revision { display: flex; align-items: center; gap: 7px; margin-left: auto; font-size: 10px; color: var(--color-text-muted); white-space: nowrap; }
+.revision button { border: 0; padding: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.revision button:hover { color: var(--color-text); text-decoration: underline; }
+.branchSelector { flex: 0 1 340px; min-width: 0; }
+.branchSelector button[aria-label="Branch"] { min-width: 0; width: 100%; max-width: 100%; padding-left: 2px; background: transparent; color: var(--color-text); }
+.branchSelector button[aria-label="Branch"]:hover, .branchSelector button[aria-label="Branch"][aria-expanded='true'] { background: transparent; color: var(--color-text); }
+.branchSelector button[aria-label="Branch"] > svg:last-child { margin-left: auto; }
+.breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 0; color: var(--color-text-muted); font-size: 13px; overflow-wrap: anywhere; }
+.breadcrumbs > svg { width: 16px; height: 16px; flex-shrink: 0; }
+.breadcrumbs a { text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs h1 { margin: 0; color: var(--color-text); font: inherit; font-weight: 500; }
+.crumb { display: contents; }
+.file { min-width: 0; }
+.fileMeta { padding: 0 0 12px; border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 11px; }
+.state { padding: 18px; color: var(--color-text-muted); font-size: 12px; }
+.readme { margin-top: 26px; }.readme > header { display: flex; align-items: center; gap: 8px; color: var(--color-text-muted); }.readme > header h2 { font-size: 11px; font-weight: 400; margin: 0; }.readme > header svg { width: 11px; height: 11px; }
+.markdown { color: var(--color-markdown-text); font-size: 13px; line-height: 1.7; }.markdown h1 { font-size: 26px; font-weight: 600; letter-spacing: -.8px; margin: 9px 0 4px; }.markdown h2 { font-size: 15px; font-weight: 600; margin: 18px 0 10px; }.markdown p { margin: 0; color: var(--appearance-muted, #60656a); }.markdown pre { padding: 12px 16px; background: var(--appearance-subtle, #f3f2f5); border-radius: 14px; overflow: auto; }.markdown code { font: 12px/1.8 var(--font-mono); }
+@media(max-width:1100px) { .contentWithHistory { grid-template-columns: 340px minmax(0, 1fr); } }
+@media(max-width:720px) { .contentWithHistory { grid-template-columns: 1fr; gap: 22px; } .contentWithHistory .history { border-right: 0; padding-right: 0; } .contentWithHistory .files { padding-left: 0; } }
+@media(max-width:720px) { .stickyHistory { position: static; height: auto; padding-bottom: 0; } }
+
+.viewSwitch { position: relative; isolation: isolate; display: inline-grid; flex: none; grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 3px; margin-left: auto; border-radius: 7px; background: var(--color-surface-subtle); }
+.viewSwitch::before { content: ''; position: absolute; z-index: -1; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 8px) / 2); border-radius: 5px; background: var(--color-surface); transition: transform 160ms ease; }
+.viewSwitch[data-view='changes']::before { transform: translateX(calc(100% + 2px)); }
+.viewSwitch button { border: 0; border-radius: 5px; padding: 5px 12px; background: transparent; color: var(--color-text-muted); font: inherit; font-size: 12px; cursor: pointer; transition: color 160ms ease; }
+.viewSwitch button:hover { color: var(--color-text); }
+.viewSwitch button[aria-pressed='true'] { color: var(--color-text); }
+@media (prefers-reduced-motion: reduce) { .viewSwitch::before, .viewSwitch button { transition: none; } }

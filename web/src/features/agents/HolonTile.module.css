@@ -1,0 +1,41 @@
+.tile {
+  --session-row-background: var(--color-surface-subtle);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+  min-width: 0;
+  box-sizing: border-box;
+  margin-block: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  background: var(--session-row-background);
+  text-decoration: none;
+  transition: background 120ms, border-color 120ms;
+}
+
+.tile:hover, .tile:focus-visible {
+  --session-row-background: var(--color-surface-hover);
+
+  border-color: var(--color-border-strong);
+}
+.tile:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+.copy { display: flex; flex: 1; flex-direction: column; gap: 3px; min-width: 0; }
+.name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; line-height: 16px; font-weight: 600; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; color: var(--color-text-soft); font-size: 10px; line-height: 15px; }
+.chevron { flex: 0 0 auto; width: 14px; height: 14px; color: var(--color-text-soft); }
+.chevron { opacity: 0.5; }
+.tile:hover .chevron, .tile:focus-visible .chevron { opacity: 1; }
+.compact { padding: 7px 10px; margin-block: 8px; }
+
+.skeletonBadge { flex: 0 0 18px; width: 18px; height: 18px; border-radius: 50%; background: var(--color-border); }
+.skeletonName, .skeletonStatus { display: flex; align-items: center; }
+.skeletonName { width: 70%; height: 16px; }
+.skeletonStatus { width: 40%; height: 15px; }
+.skeletonName::after, .skeletonStatus::after { content: ''; width: 100%; border-radius: 3px; background: var(--color-border); }
+.skeletonName::after { height: 8px; }
+.skeletonStatus::after { height: 6px; }

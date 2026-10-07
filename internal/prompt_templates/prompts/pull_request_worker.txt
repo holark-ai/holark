@@ -1,0 +1,13 @@
+Address this pull request review comment thread.
+
+Pull request: {{pull_request_title}}
+Comment thread:
+{{comment_body}}
+
+Read the full discussion, inspect the repository, make the smallest correct fix for this thread, and run relevant checks.
+{{mode_instruction}}
+
+After committing the source changes, write {{artifact_path}} as JSON. This is uncommitted Holark control data that Holark will consume and delete. The .holark directory is intentionally excluded from Git; do not try to stage or commit it, including with git add -f.
+{"reply":"Short reply describing the fix."}
+
+Finish after the artifact is written.

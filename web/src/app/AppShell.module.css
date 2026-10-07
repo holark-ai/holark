@@ -1,0 +1,40 @@
+.shell { height: 100vh; overflow: hidden; background: var(--color-surface); }
+.shell:has([data-holon-workspace]) { background: var(--terminal-bg); }
+/* Pages that paint --color-bg themselves (light: the terminal background) keep the shell behind the Holons panel in sync. */
+.shell:has([data-page-surface]) { background: var(--color-bg); }
+:global(:root[data-theme='light']) .shell:has([data-page-surface]) { background: var(--terminal-bg); }
+.shell:has([data-holon-workspace])::before,
+.main:has([data-holon-workspace])::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--ops-collapsed);
+  height: 52px;
+  background: var(--appearance-subtle, #f7f8f9);
+  box-shadow: inset 0 -1px var(--terminal-border);
+  pointer-events: none;
+}
+/* Continue the Holon header across the reserved scrollbar gutter. */
+.main:has([data-holon-workspace])::after { position: absolute; width: 8px; }
+.main {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  margin-left: var(--rail-width);
+  margin-right: calc(var(--ops-collapsed) - 8px);
+  padding-right: 8px;
+  background: var(--color-surface);
+}
+.main:has([data-holon-workspace]) { background: var(--terminal-bg); }
+.main:has([data-page-surface]) { background: var(--color-bg); }
+:global(:root[data-theme='light']) .main:has([data-page-surface]) { background: var(--terminal-bg); }
+.viewport { width: 100%; height: 100%; }
+.viewport:focus-visible { outline: none; box-shadow: none; }
+/* Keep the page width unchanged while moving its scrollbar toward the Holons panel. */
+.scrollbar { z-index: 1; background: transparent; }
+.scrollbar[data-orientation='vertical'] { width: 14px; }
+.scrollbar[data-orientation='horizontal'] { height: 14px; }
+.thumb[data-orientation='vertical'] { width: 100%; }
+.thumb[data-orientation='horizontal'] { height: 100%; }
+.message { padding: 48px; color: var(--color-text-muted); }

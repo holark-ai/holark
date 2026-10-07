@@ -1,0 +1,16 @@
+.editor { min-width: 0; width: 100%; }
+.editor[data-dragging] { outline: 1px solid var(--color-border-strong); outline-offset: 2px; }
+.editor textarea { display: block; box-sizing: border-box; width: 100%; min-width: 0; padding: 10px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); color: var(--color-text); background: var(--color-surface); font: inherit; font-size: 13px; line-height: 1.5; resize: vertical; }
+.toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; padding: 5px 0; }
+.actions { display: inline-flex; gap: 5px; margin-left: auto; }
+.preview { min-height: 86px; padding: 12px; overflow-wrap: anywhere; }
+.preview > p { margin: 0; color: var(--color-text-muted); }
+.notice { margin: 0; padding: 5px 0; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; color: var(--color-text-muted); }
+.notice[role='alert'] { color: var(--color-danger); }
+.body { min-width: 0; overflow-wrap: anywhere; line-height: 1.6; }
+.body img { max-width: 100%; height: auto; }
+.body pre { overflow: auto; }
+.body table { display: block; max-width: 100%; overflow: auto; }
+.image { display: inline-block; max-width: 100%; }
+.imageNotice { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--color-text-muted); }
+.imageNotice a { color: var(--color-info); }

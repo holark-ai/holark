@@ -1,0 +1,10 @@
+{{issue_title}}
+
+Issue description:
+{{issue_body}}
+
+{{issue_comments}}
+
+Start in plan mode. Scale repository exploration to the issue's scope and complexity. Begin with the files most likely to be relevant; do not perform a broad repository survey by default. For a simple or localized issue, inspect only the directly related code and tests, and stop exploring once the implementation path is clear. Broaden the investigation only when ambiguity, evidence, or cross-cutting risk requires it.
+
+Propose a concise implementation plan proportional to the issue, and wait for confirmation before making code changes.

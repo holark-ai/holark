@@ -1,0 +1,22 @@
+.state { color: var(--color-text-muted); font-size: 11px; line-height: 1.6; margin: 12px 0; }
+.commitDetails { min-width: 0; margin-bottom: 16px; }
+.commitMeta { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: center; gap: 4px 12px; margin: 0; font-size: 11px; line-height: 1.5; }
+.commitMeta dt { color: var(--color-text-soft); }
+.commitMeta dd { min-width: 0; margin: 0; color: var(--color-text-muted); overflow-wrap: anywhere; }
+.commitHash { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.commitHash code { min-width: 0; overflow-wrap: anywhere; font: 11px/1.5 var(--font-mono); }
+.commitHash button { flex-shrink: 0; }
+.commitTitle { margin: 24px 0 0; color: var(--color-text); font-size: 14px; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+.commitBody { margin: 8px 0 0; color: var(--color-text-muted); font-size: 12px; line-height: 1.6; }
+.commitBody > * { margin: 0; }
+.commitBody > * + * { margin-top: 8px; }
+.commitBody :is(h1, h2, h3, h4) { color: var(--color-text); font-size: 12px; font-weight: 600; }
+.commitBody :is(ul, ol) { padding-left: 20px; }
+.commitBody code { font: 11px/1.5 var(--font-mono); }
+.commitBody pre { padding: 10px; border-radius: 6px; background: var(--color-surface-subtle); }
+.commitBody blockquote { margin-left: 0; padding-left: 12px; border-left: 2px solid var(--color-border-strong); }
+.commitBody a { color: var(--color-accent); }
+.review { --diff-review-actions-inset: 0px; display: flex; flex-direction: column; min-width: 0; }
+.review > header { flex-wrap: wrap; height: auto; min-height: 48px; padding: 8px 0; }
+.openFile { flex: none; color: var(--color-text-muted); font-size: 10px; text-decoration: none; }
+.openFile:hover { color: var(--color-text); text-decoration: underline; }

@@ -1,0 +1,10 @@
+Generate a concise branch name and a human-readable session title for a coding session whose current fallback title is:
+
+{{session_title}}
+
+and whose prompt is:
+
+{{prompt}}
+
+Use 2–4 meaningful words for the branch name. It must be lowercase ASCII kebab-case, using only letters, numbers, and hyphens. The session title must concisely describe the task in at most 80 Unicode characters.
+Return only JSON matching the provided schema.

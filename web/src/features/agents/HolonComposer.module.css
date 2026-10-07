@@ -1,0 +1,8 @@
+.composer { position: fixed; z-index: 10; left: calc(var(--rail-width) + 36px); right: calc(var(--ops-collapsed) + var(--holons-panel-gap)); bottom: 22px; display: flex; align-items: center; gap: 14px; max-width: 750px; margin: auto; padding: 11px 13px; border: 1px solid var(--appearance-border, #e1e3e6); border-radius: 28px; background: var(--appearance-surface, #fff); box-shadow: 0 6px 24px var(--appearance-shadow, #2721350c); }
+.composer > button { display: grid; place-items: center; flex-shrink: 0; width: 29px; height: 29px; border: 0; border-radius: 50%; color: var(--appearance-muted, #717780); background: transparent; cursor: pointer; }.composer svg { width: 19px; height: 19px; }.context { display: flex; align-items: center; gap: 8px; background: var(--appearance-subtle, #f3f2f5); border-radius: 999px; padding: 5px 9px; font-size: 11px; white-space: nowrap; }.context svg { width: 16px; height: 16px; }
+.composer input { background: transparent; color: var(--color-text); flex: 1; min-width: 0; border: 0; outline: none; font-size: 12px; }.composer:focus-within { border-color: var(--appearance-accent, #a28bb8); }.composer > .send { color: #fff; background: #272a30; }
+@media(max-width:740px) { .composer { left: calc(var(--rail-width) + 12px); right: calc(var(--ops-collapsed) + var(--holons-panel-gap)); }.context { display: none; } }
+
+.context { max-width: 45%; min-width: 0; }.context span { overflow: hidden; text-overflow: ellipsis; }.context svg { flex-shrink: 0; }
+
+:global(:root[data-theme='dark']) .send { background: var(--color-accent); color: var(--color-text-on-accent); }

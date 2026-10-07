@@ -1,0 +1,14 @@
+{
+  "name": "holark-terminal-worker",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/patch-xterm-scrollback.mjs"
+  },
+  "dependencies": {
+    "@xterm/addon-serialize": "^0.14.0",
+    "@xterm/addon-unicode11": "0.9.0",
+    "@xterm/headless": "6.0.0"
+  }
+}

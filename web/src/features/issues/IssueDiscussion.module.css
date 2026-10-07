@@ -1,0 +1,21 @@
+.discussion { margin-top: 2rem; min-width: 0; }
+.heading, .actions, .meta { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.heading { justify-content: space-between; }
+.meta { font-size: .85rem; color: var(--color-text-muted); }
+.meta img { border-radius: 50%; }
+.comment { border-top: 1px solid var(--color-border); padding: 1.25rem 0; }
+.markdown { overflow-wrap: anywhere; line-height: 1.6; }
+.markdown img { max-width: 100%; height: auto; }
+.markdown pre { overflow: auto; padding: .75rem; background: var(--color-surface-subtle); }
+.markdown blockquote { border-left: 3px solid var(--color-border-strong); margin-left: 0; padding-left: 1rem; }
+.markdown table { display: block; overflow: auto; }
+.markdown td, .markdown th { border: 1px solid var(--color-border); padding: .3rem .6rem; }
+.discussion textarea { display: block; box-sizing: border-box; width: 100%; min-height: 9rem; margin: .5rem 0; padding: .75rem; resize: vertical; font: inherit; color: inherit; background: var(--color-control); border: 1px solid var(--color-border-strong); border-radius: .4rem; }
+.composer { margin-top: 1.5rem; }
+
+.commentHeader { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; min-height: 30px; }
+.commentMenu { position: relative; display: inline-flex; }
+.menuButton { width: 30px; padding: 0; }
+.menuButton:hover:not(:disabled), .menuButton[aria-expanded="true"] { border-color: var(--color-border); color: var(--color-text); background: var(--color-surface); }
+.menuButton svg { width: 16px; height: 16px; }
+.menuPopover { z-index: 3; top: calc(100% + 5px); right: 0; min-width: 132px; }

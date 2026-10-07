@@ -1,0 +1,32 @@
+.form { display: grid; gap: 14px; font-size: 13px; }
+.verdict { display: flex; gap: 5px; margin: 0; padding: 4px; border: 1px solid var(--color-border); border-radius: 7px; background: var(--color-surface-subtle); }
+.verdict label { position: relative; display: flex; flex: 1; align-items: center; justify-content: center; gap: 7px; min-height: 35px; border: 1px solid transparent; border-radius: 5px; cursor: pointer; }
+.verdict label:has(:checked) { color: var(--color-text); background: var(--color-surface); border-color: var(--color-border); }
+.verdict label:hover { color: var(--color-text); }
+.verdict label:has(:focus-visible) { outline: 2px solid var(--color-info); outline-offset: 2px; }
+.verdict input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.verdict:disabled label { cursor: default; opacity: .6; }
+.form svg, .activity svg { width: 15px; height: 15px; flex-shrink: 0; }
+.draftSummary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0; border: 0; background: transparent; color: var(--color-text-muted); font: inherit; text-align: left; cursor: pointer; }
+.draftSummary span:last-child { color: var(--color-info); font-size: 12px; }
+.draftSummary:hover span:last-child { text-decoration: underline; }
+.editor { overflow: hidden; border: 1px solid var(--color-border); border-radius: 7px; }
+.editor:focus-within { border-color: var(--color-text-soft); }
+.editorHeading { display: flex; align-items: center; justify-content: space-between; padding: 5px 10px; border-bottom: 1px solid var(--color-border); }
+.editorHeading label { color: var(--color-text); font-size: 12px; }
+.editorHeading label span { color: var(--color-text-soft); }
+.editorHeading button { width: 28px; min-height: 28px; padding: 0; }
+.editor textarea { display: block; width: 100%; box-sizing: border-box; min-height: 125px; max-height: 35vh; padding: 12px; border: 0; outline: none; resize: vertical; color: var(--color-text); background: var(--color-surface); font: inherit; line-height: 1.6; }
+.preview { min-height: 125px; max-height: 35vh; overflow-y: auto; padding: 12px; overflow-wrap: anywhere; }
+.form .hint { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; color: var(--color-text-soft); font-size: 11px; }
+.hint span { margin-left: auto; }
+.hint code, .reviewHeading code { font-size: 11px; }
+.form .error, .activity .error { color: var(--color-danger); font-size: 12px; line-height: 1.6; }
+.activity { margin: 24px 0 0; }
+.review { padding: 13px 0; border-bottom: 1px solid var(--color-border); font-size: 13px; overflow-wrap: anywhere; }
+.reviewHeading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 7px; color: var(--color-text-soft); font-size: 12px; }
+.reviewHeading strong { color: var(--color-text); font-weight: 550; }
+.reviewHeading time { margin-left: auto; font-size: 11px; }
+.reviewHeading a { display: inline-flex; color: var(--color-text-soft); }
+.delivery { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; color: var(--color-warning); font-size: 12px; }
+@media (forced-colors: active) { .verdict label:has(:checked), .editor:focus-within { outline: 1px solid Highlight; } }

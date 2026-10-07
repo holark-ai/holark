@@ -1,0 +1,25 @@
+.menu.menu {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1px solid var(--appearance-border, var(--color-border));
+  border-radius: 10px;
+  background: var(--appearance-surface, var(--color-surface));
+  box-shadow: 0 8px 22px var(--appearance-shadow, #30233e16);
+}
+
+.menu .item {
+  justify-content: center;
+  width: 100%;
+  padding: 9px 4px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--appearance-accent, var(--color-accent));
+  background: transparent;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.menu .item:hover:not(:disabled) { background: var(--appearance-hover, var(--color-surface-hover)); }
+.menu .item svg { flex-shrink: 0; color: currentColor; }

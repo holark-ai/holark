@@ -1,0 +1,1 @@
+.chip { display: inline-flex; flex-shrink: 0; align-items: center; margin-left: auto; padding: 3px 5px; border-radius: 3px; background: color-mix(in srgb, currentColor 18%, transparent); font-family: inherit; font-size: 10px; font-weight: 600; line-height: 1; white-space: nowrap; opacity: 0.75; }

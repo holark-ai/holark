@@ -1,0 +1,26 @@
+.sessionStatusIcon { position: relative; display: grid; flex: 0 0 18px; place-items: center; width: 18px; height: 18px; }
+.sessionStatusIcon svg { width: 14px; height: 14px; stroke-width: 2; }
+.addressedStatus::before { position: absolute; inset: 0; border: 1px solid currentColor; border-radius: 50%; background: color-mix(in srgb, currentColor 7%, transparent); content: ""; }
+.sessionAddress { position: relative; z-index: 1; font-family: var(--font-mono); font-size: 9px; font-weight: 750; line-height: 1; }
+.statusActive { color: var(--color-info); }
+.statusAttention { color: var(--color-warning); }
+.statusComplete { color: var(--color-success); }
+.statusIdle { color: var(--color-text-muted); }
+.statusFailed { color: var(--color-danger); }
+.statusEnded { color: var(--color-text-soft); }
+.statusActive svg { animation: statusSpin 4s linear infinite; }
+.statusActive.addressedStatus::before { border-style: dashed; animation: statusSpin 4s linear infinite; }
+
+@keyframes statusSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .statusActive svg, .statusActive.addressedStatus::before { animation: none; }
+}
+
+
+.sessionStatusIcon { flex-basis: 29px; width: 29px; height: 29px; }
+.addressedStatus::before, .statusActive.addressedStatus::before { border: 1px solid var(--holon-circle-border, var(--appearance-border-strong, #d3d6da)); background: transparent; animation: none; }
+.sessionAddress { font: 12px/1 var(--font-sans); color: var(--holon-letter-color, var(--appearance-soft, #737981)); }
+.sessionBadge { position: absolute; right: -3px; bottom: -2px; display: grid; place-items: center; width: 12px; height: 12px; box-sizing: border-box; border: 2px solid var(--appearance-subtle, #fbfafc); border-radius: 50%; background: currentColor; font: 8px/8px var(--font-sans); }
+.sessionBadge::first-letter { color: white; }
+.statusAttention .sessionBadge { background: var(--color-warning); color: white; }
+.statusAttention.addressedStatus::before { border-color: var(--color-warning); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-warning) 14%, transparent); }

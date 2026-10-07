@@ -1,0 +1,6 @@
+Holark detected uncommitted changes from this auto pull request comment worker.
+
+Inspect the changes with git status and git diff.
+Create a git commit for the review comment fix. {{artifact_path}} is uncommitted Holark control data that Holark will consume and delete. The .holark directory is intentionally excluded from Git; do not try to stage or commit it, including with git add -f.
+Ensure the artifact still exists and is valid JSON.
+Then finish again. Do not ask for user input unless you are truly blocked.

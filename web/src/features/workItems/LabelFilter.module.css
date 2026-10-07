@@ -1,0 +1,37 @@
+.popup { display: flex; flex-direction: column; max-height: min(calc(100dvh - 28px), var(--available-height)); width: min(340px, calc(100vw - 28px)); background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); font-size: 13px; }
+.heading { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; }
+.heading { border-bottom: 1px solid var(--color-border); }
+.heading h2 { margin: 0; font-size: 13px; }
+.body { min-height: 0; overflow: auto; padding: 12px; }
+.body p { color: var(--color-text-muted); }
+.body [role=alert] { color: var(--color-danger); }
+.explanation { margin: 0 0 12px; font-size: 12px; line-height: 1.5; }
+.explanation strong { display: block; color: var(--color-text); font-weight: 550; }
+.explanation span { display: block; }
+.groups { display: flex; flex-direction: column; gap: 8px; }
+.group { min-width: 0; margin: 0; padding: 8px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+.groupHeading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; color: var(--color-text-muted); font-size: 12px; }
+.removeGroup { display: flex; padding: 3px; border: 0; background: none; color: var(--color-text-muted); cursor: pointer; }
+.removeGroup:hover { color: var(--color-text); }
+.removeGroup svg { width: 12px; height: 12px; }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 6px; }
+.chips:empty { display: none; }
+.chip { display: inline-flex; align-items: center; gap: 6px; min-width: 0; max-width: 100%; padding: 4px 6px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-control); color: var(--color-text); font: inherit; font-size: 12px; cursor: pointer; }
+.chip > span:not(.swatch) { overflow-wrap: anywhere; text-align: left; }
+.chip svg, .addLabel svg, .addGroup svg { width: 12px; height: 12px; flex-shrink: 0; }
+.chip svg { color: var(--color-text-muted); }
+.chip:hover { border-color: var(--color-text-muted); }
+.addLabel, .addGroup, .done { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border: 0; background: none; color: var(--color-text-muted); font: inherit; font-size: 12px; cursor: pointer; }
+.addGroup { margin-top: 8px; }
+.addLabel:hover, .addGroup:hover, .done:hover { color: var(--color-text); }
+.popup button:focus-visible, .search:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+.search { width: 100%; padding: 7px 8px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background: var(--color-control); color: var(--color-text); font: inherit; font-size: 12px; }
+.options { max-height: 192px; overflow-y: auto; margin-top: 4px; }
+.option { display: flex; align-items: center; gap: 8px; padding: 7px 4px; border-radius: 3px; cursor: pointer; overflow-wrap: anywhere; }
+.option:hover { background: var(--color-surface-hover); }
+.option:focus-within { outline: 2px solid var(--color-focus-ring); outline-offset: -2px; }
+.option input { accent-color: var(--color-accent); flex-shrink: 0; margin: 0; }
+.swatch { width: 8px; height: 8px; border-radius: 50%; background: var(--color-border-strong); flex-shrink: 0; }
+.picker { margin-top: 8px; }
+.done { display: block; margin-left: auto; color: var(--color-accent); }
+@media (pointer: coarse) { .option, .chip, .addLabel, .addGroup, .done, .removeGroup { min-height: 36px; } }

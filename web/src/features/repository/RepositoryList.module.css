@@ -1,0 +1,5 @@
+.wrapper { width: 100%; background: var(--color-surface); }.table { display: flex; flex-direction: column; }
+.columnHead, .row { display: grid; grid-template-columns: minmax(0, 65fr) minmax(50px, 18fr) minmax(60px, 17fr); align-items: center; gap: 12px; border-bottom: 1px solid var(--color-border); }
+.columnHead { padding: 0 0 9px; color: var(--color-text-muted); font-size: 11px; }.columnHead span:last-child { text-align: right; }
+.row { min-height: 37px; padding: 9px 0; color: var(--color-text-muted); font-size: 12px; line-height: 18px; text-decoration: none; }.row:hover { background: var(--color-surface-subtle); }
+.name { display: flex; align-items: center; min-width: 0; gap: 12px; color: var(--color-text); font-weight: 400; }.name span, .message { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }.name svg { flex-shrink: 0; width: 16px; height: 16px; color: var(--appearance-soft, #818793); stroke-width: 1.6; }.folder { fill: none; }.updated { text-align: right; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

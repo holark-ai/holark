@@ -1,0 +1,32 @@
+.threadLocation { display: flex; flex: 0 1 auto; align-items: center; gap: 5px; min-width: 0; max-width: min(360px, 40vw); color: var(--color-text-soft); font-size: 11px; font-weight: 400; }
+.threadLocation > svg { flex-shrink: 0; width: 12px; height: 12px; }
+
+.scopeLabel { flex: 0 0 auto; color: var(--color-text-soft); font-size: 11px; font-weight: 400; white-space: nowrap; }
+.generalScope::before { content: '·'; margin-right: 7px; font-weight: 400; }
+.threadLocation .locationButton, .locationText { display: block; min-width: 0; overflow: hidden; color: inherit; font: inherit; text-align: left; white-space: nowrap; }
+.locationButton { padding: 0; border: 0; background: none; cursor: pointer; }
+.locationButton:hover { color: var(--color-info); text-decoration: underline; }
+.locationButton:focus-visible { outline: 2px solid var(--color-info); outline-offset: 3px; }
+.locationButton code, .locationText code { display: flex; min-width: 0; font: inherit; }
+.directory { overflow: hidden; text-overflow: ellipsis; }
+.filename { flex-shrink: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.threadExcerpt { overflow-x: auto; border-left: 2px solid var(--color-border); color: var(--color-text-muted); padding-bottom: 4px; font: 12px/1.8 var(--font-mono); tab-size: 4; }
+.threadExcerptRow { display: grid; grid-template-columns: 30px 30px 22px minmax(max-content, 1fr); min-width: max-content; padding-right: 12px; }
+.threadExcerptRow code { padding: 0; white-space: pre; font: inherit; }
+.threadLineNumber { font-size: 10px; color: var(--color-text-soft); text-align: right; user-select: none; }
+.added { background: color-mix(in srgb, var(--color-success) 11%, transparent); }
+.removed { background: color-mix(in srgb, var(--color-danger) 11%, transparent); }
+.diffSign { text-align: center; user-select: none; }
+.added .diffSign { color: var(--color-success); }
+.removed .diffSign { color: var(--color-danger); }
+
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.threadContext { min-width: 0; margin: 0 16px 8px; }
+.threadExcerpt:focus-visible { outline: 2px solid var(--color-info); outline-offset: 2px; }
+:global(:root[data-theme='light']) .threadExcerpt { color: #454a41; }
+:global(:root[data-theme='light']) .threadLineNumber { color: #858980; }
+:global(:root[data-theme='light']) .added { background: #eef8f0; }
+:global(:root[data-theme='light']) .removed { background: #fff0ee; }
+:global(:root[data-theme='light']) .added .diffSign { color: #277440; }
+:global(:root[data-theme='light']) .removed .diffSign { color: #b34736; }

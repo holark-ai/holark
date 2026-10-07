@@ -1,0 +1,7 @@
+.page {
+  padding: 24px var(--holons-panel-gap, 24px) 48px 24px;
+}
+
+@media (max-width: 720px) {
+  .page { padding-top: 16px; padding-left: 16px; }
+}

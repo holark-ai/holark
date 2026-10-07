@@ -1,0 +1,4 @@
+Inspect the uncommitted changes with git status and git diff, including staged and untracked files.
+
+Think through a clear commit subject and, when useful, a body explaining what changed and why. Follow the repository commit-message guidelines and keep the detail proportional to the changes.
+Create the commit without asking for another confirmation, then finish your turn. Do not modify source files, amend existing commits, or push. If you cannot complete the commit, explain what is blocking you and ask for the input you need.

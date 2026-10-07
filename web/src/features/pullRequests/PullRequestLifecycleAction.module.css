@@ -1,0 +1,109 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.split {
+  display: inline-flex;
+  min-height: 36px;
+}
+
+.primaryWrapper {
+  position: relative;
+  display: inline-flex;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  outline: none;
+}
+
+.primary,
+.menuButton {
+  border: 0;
+  color: var(--color-text-on-accent);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary,
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  background: var(--color-accent);
+}
+
+.primary {
+  min-width: 112px;
+  gap: 7px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.primaryOnly { border-radius: var(--radius-sm); }
+
+.menuButton {
+  width: 34px;
+  padding: 0;
+  border-left: 1px solid color-mix(in srgb, var(--color-text-on-accent) 28%, transparent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.primary:hover:not(:disabled),
+.menuButton:hover:not(:disabled) { background: var(--color-accent-dark); }
+
+.primary:disabled,
+.menuButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.primary svg,
+.menuButton svg {
+  width: 15px;
+  height: 15px;
+}
+
+.primaryWrapper:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 28%, transparent);
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 8;
+  top: calc(100% + 7px);
+  left: 50%;
+  width: max-content;
+  max-width: 220px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-on-accent);
+  background: var(--color-text);
+  box-shadow: var(--shadow-lg);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.3;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -2px);
+  transition: opacity 100ms ease, transform 100ms ease;
+}
+
+.primaryWrapper:hover .tooltip,
+.primaryWrapper:focus-visible .tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.menu {
+  z-index: 7;
+  top: calc(100% + 5px);
+  right: 0;
+  min-width: 176px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip { transition: none; }
+}

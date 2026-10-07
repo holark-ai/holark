@@ -1,0 +1,490 @@
+{
+  "ranges": {
+    "0:1": [
+      {
+        "path": "src/styles/workspace.css",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n",
+          "modified": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n\n.session-tabs button {\n  border-radius: 999px;\n  padding: 6px 14px;\n}\n\n.session-tabs button[aria-pressed=\"true\"] {\n  background: #eeedf5;\n}\n"
+        }
+      }
+    ],
+    "0:2": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 3,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal() {\n  const [active, setActive] = useState('agent-1')\n\n  return { active, setActive }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      },
+      {
+        "path": "src/styles/workspace.css",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n",
+          "modified": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n\n.session-tabs button {\n  border-radius: 999px;\n  padding: 6px 14px;\n}\n\n.session-tabs button[aria-pressed=\"true\"] {\n  background: #eeedf5;\n}\n"
+        }
+      }
+    ],
+    "0:3": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 3,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal() {\n  const [active, setActive] = useState('agent-1')\n\n  return { active, setActive }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      },
+      {
+        "path": "src/components/SessionTabs.tsx",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\">\n      {sessions.map(session => (\n        <button onClick={() => onSelect(session.id)}>\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n",
+          "modified": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\" aria-label=\"Sessions\">\n      {sessions.map(session => (\n        <button\n          key={session.id}\n          aria-pressed={session.id === active}\n          onClick={() => onSelect(session.id)}\n        >\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n"
+        }
+      },
+      {
+        "path": "src/styles/workspace.css",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n",
+          "modified": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n\n.session-tabs button {\n  border-radius: 999px;\n  padding: 6px 14px;\n}\n\n.session-tabs button[aria-pressed=\"true\"] {\n  background: #eeedf5;\n}\n"
+        }
+      }
+    ],
+    "0:4": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 3,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal() {\n  const [active, setActive] = useState('agent-1')\n\n  return { active, setActive }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    if (workspaceId) localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      },
+      {
+        "path": "src/components/SessionTabs.tsx",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\">\n      {sessions.map(session => (\n        <button onClick={() => onSelect(session.id)}>\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n",
+          "modified": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\" aria-label=\"Sessions\">\n      {sessions.map(session => (\n        <button\n          key={session.id}\n          aria-pressed={session.id === active}\n          onClick={() => onSelect(session.id)}\n        >\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n"
+        }
+      },
+      {
+        "path": "src/styles/workspace.css",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n",
+          "modified": ".session-tabs {\n  display: flex;\n  gap: 8px;\n}\n\n.session-tabs button {\n  border-radius: 999px;\n  padding: 6px 14px;\n}\n\n.session-tabs button[aria-pressed=\"true\"] {\n  background: #eeedf5;\n}\n"
+        }
+      },
+      {
+        "path": "public/workspace-preview.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "binary": true,
+        "diff_truncated": false,
+        "content_status": "binary"
+      }
+    ],
+    "1:2": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 3,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal() {\n  const [active, setActive] = useState('agent-1')\n\n  return { active, setActive }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      }
+    ],
+    "1:3": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 3,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal() {\n  const [active, setActive] = useState('agent-1')\n\n  return { active, setActive }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      },
+      {
+        "path": "src/components/SessionTabs.tsx",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\">\n      {sessions.map(session => (\n        <button onClick={() => onSelect(session.id)}>\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n",
+          "modified": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\" aria-label=\"Sessions\">\n      {sessions.map(session => (\n        <button\n          key={session.id}\n          aria-pressed={session.id === active}\n          onClick={() => onSelect(session.id)}\n        >\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n"
+        }
+      }
+    ],
+    "1:4": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 3,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal() {\n  const [active, setActive] = useState('agent-1')\n\n  return { active, setActive }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    if (workspaceId) localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      },
+      {
+        "path": "src/components/SessionTabs.tsx",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\">\n      {sessions.map(session => (\n        <button onClick={() => onSelect(session.id)}>\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n",
+          "modified": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\" aria-label=\"Sessions\">\n      {sessions.map(session => (\n        <button\n          key={session.id}\n          aria-pressed={session.id === active}\n          onClick={() => onSelect(session.id)}\n        >\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n"
+        }
+      },
+      {
+        "path": "public/workspace-preview.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "binary": true,
+        "diff_truncated": false,
+        "content_status": "binary"
+      }
+    ],
+    "2:3": [
+      {
+        "path": "src/components/SessionTabs.tsx",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\">\n      {sessions.map(session => (\n        <button onClick={() => onSelect(session.id)}>\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n",
+          "modified": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\" aria-label=\"Sessions\">\n      {sessions.map(session => (\n        <button\n          key={session.id}\n          aria-pressed={session.id === active}\n          onClick={() => onSelect(session.id)}\n        >\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n"
+        }
+      }
+    ],
+    "2:4": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    if (workspaceId) localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      },
+      {
+        "path": "src/components/SessionTabs.tsx",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 2,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\">\n      {sessions.map(session => (\n        <button onClick={() => onSelect(session.id)}>\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n",
+          "modified": "export function SessionTabs({ sessions, active, onSelect }) {\n  return (\n    <nav className=\"session-tabs\" aria-label=\"Sessions\">\n      {sessions.map(session => (\n        <button\n          key={session.id}\n          aria-pressed={session.id === active}\n          onClick={() => onSelect(session.id)}\n        >\n          {session.title}\n        </button>\n      ))}\n    </nav>\n  )\n}\n"
+        }
+      },
+      {
+        "path": "public/workspace-preview.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "binary": true,
+        "diff_truncated": false,
+        "content_status": "binary"
+      }
+    ],
+    "3:4": [
+      {
+        "path": "src/hooks/useActiveTerminal.ts",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "binary": false,
+        "diff_truncated": false,
+        "content_status": "ready",
+        "contents": {
+          "original": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n",
+          "modified": "import { useState } from 'react'\n\nexport function useActiveTerminal(workspaceId: string) {\n  const key = `activeTerminal:${workspaceId}`\n  const [active, setActive] = useState(() =>\n    localStorage.getItem(key) ?? 'agent-1'\n  )\n\n  function selectTerminal(id: string) {\n    if (workspaceId) localStorage.setItem(key, id)\n    setActive(id)\n  }\n\n  return { active, selectTerminal }\n}\n"
+        }
+      },
+      {
+        "path": "public/workspace-preview.png",
+        "status": "added",
+        "additions": 0,
+        "deletions": 0,
+        "binary": true,
+        "diff_truncated": false,
+        "content_status": "binary"
+      }
+    ]
+  },
+  "holons": [
+    {
+      "id": "W",
+      "name": "Resume the background indexing worker",
+      "tokens": 104000,
+      "age": "12m",
+      "status": "permission",
+      "pr": 145,
+      "background": true
+    },
+    {
+      "id": "H",
+      "name": "Audit API permissions across workspaces",
+      "tokens": 8000,
+      "age": "4h",
+      "status": "permission"
+    },
+    {
+      "id": "D",
+      "name": "Explain how repository worktrees connect",
+      "tokens": 126000,
+      "age": "3d",
+      "status": "input"
+    },
+    {
+      "id": "C",
+      "name": "Investigate intermittent terminal startup failures",
+      "tokens": 168000,
+      "age": "3d",
+      "status": "input",
+      "pr": 142,
+      "background": true
+    },
+    {
+      "id": "A",
+      "name": "Assess the current backend architecture",
+      "tokens": 175000,
+      "age": "3d",
+      "status": "working"
+    },
+    {
+      "id": "B",
+      "name": "Explore shared components and layouts",
+      "tokens": 132000,
+      "age": "3d",
+      "status": "working",
+      "pr": 142
+    },
+    {
+      "id": "F",
+      "name": "Refactor workspace selection state handling",
+      "tokens": 21000,
+      "age": "6h",
+      "status": "working",
+      "pr": 142,
+      "background": true
+    },
+    {
+      "id": "G",
+      "name": "Document local development setup steps",
+      "tokens": 12000,
+      "age": "5h",
+      "status": "done",
+      "pr": 142,
+      "background": true
+    },
+    {
+      "id": "J",
+      "name": "Fix the production web build",
+      "tokens": 115000,
+      "age": "3h",
+      "status": "working",
+      "pr": 145,
+      "background": true
+    },
+    {
+      "id": "K",
+      "name": "Check indexing performance under load",
+      "tokens": 46000,
+      "age": "2h",
+      "status": "working",
+      "pr": 145,
+      "background": true
+    },
+    {
+      "id": "E",
+      "name": "Verify terminal session restoration behavior",
+      "tokens": 18000,
+      "age": "8h",
+      "status": "done",
+      "pr": 139,
+      "background": true
+    },
+    {
+      "id": "N",
+      "name": "Review the latest navigation changes",
+      "tokens": 156000,
+      "age": "1h",
+      "status": "done",
+      "pr": 139,
+      "background": true
+    },
+    {
+      "id": "I",
+      "name": "Clean up unused repository assets",
+      "tokens": 6000,
+      "age": "4h",
+      "status": "idle"
+    },
+    {
+      "id": "Q",
+      "name": "Update shared workspace configuration defaults",
+      "tokens": 2000,
+      "age": "41m",
+      "status": "idle",
+      "pr": 143,
+      "background": true
+    },
+    {
+      "id": "R",
+      "name": "Prepare configuration compatibility review notes",
+      "tokens": 19000,
+      "age": "1h",
+      "status": "idle",
+      "pr": 143,
+      "background": true
+    },
+    {
+      "id": "L",
+      "name": "Approve dependency updates for the frontend",
+      "tokens": 34000,
+      "age": "27m",
+      "status": "permission"
+    },
+    {
+      "id": "M",
+      "name": "Clarify keyboard shortcuts for workspace switching",
+      "tokens": 17000,
+      "age": "52m",
+      "status": "input"
+    },
+    {
+      "id": "O",
+      "name": "Improve search results for large repositories",
+      "tokens": 68000,
+      "age": "2h",
+      "status": "working"
+    },
+    {
+      "id": "P",
+      "name": "Polish dark theme contrast and focus indicators",
+      "tokens": 42000,
+      "age": "36m",
+      "status": "working"
+    },
+    {
+      "id": "S",
+      "name": "Verify responsive layouts on smaller screens",
+      "tokens": 23000,
+      "age": "3h",
+      "status": "done"
+    },
+    {
+      "id": "T",
+      "name": "Prepare release notes for the next version",
+      "tokens": 9000,
+      "age": "18m",
+      "status": "idle"
+    }
+  ],
+  "pullRequests": [
+    {
+      "number": 142,
+      "title": "Improve workspace navigation",
+      "state": "Open",
+      "status": "working"
+    },
+    {
+      "number": 145,
+      "title": "Speed up repository indexing while keeping file search responsive across large workspaces and linked worktrees",
+      "state": "Open",
+      "status": "working"
+    },
+    {
+      "number": 139,
+      "title": "Restore terminal sessions reliably after restarting the app without losing scrollback or the active working directory",
+      "state": "Merged",
+      "status": "done"
+    },
+    {
+      "number": 143,
+      "title": "Simplify shared workspace configuration so every contributor uses the same tools, environment settings, and startup commands",
+      "state": "Draft",
+      "status": "idle"
+    }
+  ]
+}

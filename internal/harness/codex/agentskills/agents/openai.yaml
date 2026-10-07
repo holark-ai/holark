@@ -1,0 +1,4 @@
+interface:
+  display_name: "Holark Integration"
+  short_description: "Use the local Holark CLI from agent sessions"
+  default_prompt: "Use the Holark CLI to list, create, inspect, close, or reopen issues."

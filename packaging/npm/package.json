@@ -1,0 +1,27 @@
+{
+  "name": "holark",
+  "version": "0.1.0-1",
+  "description": "A local workspace for coding agents and Git repositories",
+  "type": "module",
+  "bin": {
+    "holark": "cli.mjs"
+  },
+  "os": ["linux", "darwin"],
+  "cpu": ["x64", "arm64"],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "files": ["cli.mjs", "native/", "terminal-worker/worker.mjs"],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holark-ai/holark.git"
+  },
+  "homepage": "https://github.com/holark-ai/holark#readme",
+  "bugs": {
+    "url": "https://github.com/holark-ai/holark/issues"
+  }
+}

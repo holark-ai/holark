@@ -1,0 +1,75 @@
+.rail {
+  position: fixed;
+  z-index: 40;
+  inset: 0 auto 0 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: var(--rail-width);
+  border-right: 1px solid var(--rail-border);
+  background: var(--rail-bg);
+  color: var(--rail-text);
+}
+
+.mark { display: grid; place-items: center; width: 36px; height: 36px; }
+.mark svg { width: 19px; fill: currentColor; }
+.items { display: flex; flex: 1; flex-direction: column; }
+.item { position: relative; display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: var(--rail-muted); cursor: pointer; }
+.item:hover { background: var(--rail-hover); color: var(--rail-text); }
+.item.active { background: var(--rail-active); color: var(--rail-active-text); }
+.item.active::before { content: ''; position: absolute; left: -9px; width: 3px; height: 20px; border-radius: 0 3px 3px 0; background: var(--color-accent); }
+.item svg { width: 19px; }
+.themeButton { flex: 0 0 35px; margin-bottom: 8px; }
+.fullscreenButton { flex: 0 0 38px; margin-bottom: 8px; }
+.fullscreenButton[aria-pressed='true'] { background: var(--rail-active); color: var(--rail-active-text); }
+.fullscreenButton[data-fullscreen-hint='true'] svg { transform-origin: center; animation: suggestFullscreen 600ms cubic-bezier(0.2, 0.8, 0.2, 1) 2; }
+.fullscreenButton[data-fullscreen-tooltip-hint='true']::after { opacity: 1; transform: none; }
+@keyframes suggestFullscreen { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.14); } }
+@media (prefers-reduced-motion: reduce) { .fullscreenButton[data-fullscreen-hint='true'] svg { animation: none; } }
+.account { position: relative; margin: 0 0 8px; }
+.accountButton { position: relative; display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid var(--rail-account-border); border-radius: 9px; background: var(--rail-account-bg); color: var(--rail-text); font-size: 11px; font-weight: 800; cursor: pointer; }
+.accountButton:hover, .accountButton[aria-expanded='true'] { border-color: var(--rail-account-border-hover); background: var(--rail-account-hover); color: var(--rail-text); }
+.accountMenu { position: absolute; z-index: 90; left: 48px; bottom: 0; width: 238px; padding: 10px; border: 1px solid var(--rail-menu-border); border-radius: var(--radius-sm); background: var(--rail-menu-bg); box-shadow: var(--rail-shadow); color: var(--rail-text); }
+.accountIdentity { display: flex; align-items: flex-start; gap: 8px; min-width: 0; padding: 3px 4px 9px; border-bottom: 1px solid var(--rail-menu-border); }
+.accountIdentityCopy { display: grid; flex: 1; gap: 1px; min-width: 0; }
+.accountName { overflow: hidden; font-size: 13px; font-weight: 760; text-overflow: ellipsis; white-space: nowrap; }
+.accountEmail { overflow: hidden; color: var(--rail-muted); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.accountIdentityActions { display: flex; flex: 0 0 auto; gap: 4px; }
+.attentionInfoButton { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 4px; min-height: 27px; padding: 0 5px; border: 1px solid var(--rail-account-border); border-radius: 5px; color: var(--rail-muted); background: transparent; text-decoration: none; cursor: pointer; }
+.attentionInfoButton:hover { border-color: var(--rail-account-border-hover); color: var(--rail-text); background: var(--rail-account-hover); }
+.attentionInfoButton:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+.attentionInfoButton svg { width: 13px; height: 13px; }
+.attentionInfoBadge { padding: 2px 4px; border-radius: 999px; color: var(--rail-muted); background: var(--rail-hover); font-size: 8px; font-weight: 600; line-height: 1; }
+.signOut { display: flex; align-items: center; width: 100%; gap: 8px; margin-top: 8px; padding: 8px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--rail-text); font-weight: 700; cursor: pointer; }
+.signOut:hover { background: var(--rail-hover); color: var(--rail-text); }
+.signOut svg { width: 16px; }
+.version { margin-bottom: 13px; color: var(--rail-faint); font-size: 9px; font-weight: 700; }
+
+.item::after, .mark::after, .accountButton::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  z-index: 80;
+  left: var(--rail-width);
+  padding: 5px 8px;
+  border-radius: 5px;
+  background: var(--rail-tooltip-bg);
+  color: var(--rail-text);
+  font-size: 11px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-3px);
+  transition: opacity 120ms ease, transform 120ms ease;
+  white-space: nowrap;
+}
+.item:hover::after, .item:focus-visible::after, .mark:hover::after, .mark:focus-visible::after, .accountButton:hover::after, .accountButton:focus-visible::after { opacity: 1; transform: none; }
+.item:focus-visible, .mark:focus-visible, .accountButton:focus-visible { outline: none; }
+.mark { position: relative; }
+
+
+.mark { margin-top: 20px; text-decoration: none; color: #5d3bab; background: transparent; border-radius: 0; }
+.items { gap: 18px; margin-top: 35px; }
+.item { width: 35px; height: 35px; border-radius: 10px; }
+.item.active::before { display: none; }
+
+.brandLetter { color: #6742af; font-size: 25px; line-height: 1; font-weight: 700; }
+.brandLogo { width: 25px; height: auto; }

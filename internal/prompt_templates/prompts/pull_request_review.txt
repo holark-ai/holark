@@ -1,0 +1,60 @@
+Review the PR on this branch.
+
+Title: {{pull_request_title}}
+
+Description:
+{{pull_request_description}}
+
+Base commit: {{base_commit}}
+
+1. Inspection and delegation
+
+Review the changes from the base commit to the current HEAD. Assess the review risk based on the change's scope, complexity, potential impact, and test confidence. Scale the review accordingly.
+
+Identify the distinct areas or flows affected, and delegate each to a separate subagent. Delegate detailed investigation as much as possible to keep your context focused on orchestration, coverage, and consolidation. Review interactions that cross delegated areas yourself. Assign each subagent a separate output file such as `.holark/review.part-1.json`, and use {{artifact_path}} for the final consolidated review artifact.
+
+2. Review
+
+Look for issues worth fixing, including correctness problems, regressions, missing behavior, unsafe failure handling, and meaningful gaps in test coverage. For behavior changes, reason through end-to-end scenarios and important failure, recovery, and interaction cases rather than reviewing changed lines in isolation. Ignore purely stylistic preferences.
+
+Every reviewer, including you and each subagent, must report every actionable issue found in their assigned scope. Finding one or several issues is not a reason to stop reviewing. Do not suppress a valid finding because another reviewer may also report it; duplicates are handled during consolidation.
+
+In its completion message, each subagent must also report the areas, behaviors, and important cases it actually examined, along with any open questions it encountered. Keep this coverage report out of the JSON review artifact.
+
+Start every review comment with exactly one severity label:
+- [Critical] — a security, data-loss, or broadly blocking failure.
+- [High] — a serious defect affecting normal use or correctness.
+- [Medium] — a real defect with limited impact or that occurs under limited conditions.
+- [Low] — a minor but actionable defect.
+- [Nit] — optional, non-blocking polish. Use this only for concrete, useful improvements, not personal style preferences.
+
+Write very concise, simply phrased review comments that a reviewer unfamiliar with the PR can understand. Explain the issue and the recommended fix in simple terms. Keep each comment to one issue and use the narrowest accurate location. Avoid unnecessary jargon or implementation detail. Prefer compact ASCII diagrams and/or bullet points to prose when they make the issue or fix easier to grasp.
+
+3. Follow-up, consolidation, and deduplication
+
+After the initial subagents finish, read their review artifacts and coverage reports. Compare the reported coverage with the changed flows to identify material gaps. Launch one or more fresh subagents to independently verify the highest-risk behaviors and perform focused follow-up reviews of any gaps. Give them relevant context from the initial reviews when helpful, while asking them to assess the assigned behavior independently.
+
+After any follow-up reviews finish, combine every finding with your own in {{artifact_path}}. Remove only duplicate findings, merging their useful details when appropriate. Holark only reads {{artifact_path}}.
+
+4. Artifacts
+
+Each review artifact must be written as:
+{
+  "comments": [
+    {
+      "body": "[High] Description of the issue.\n\n**Recommended fix**\n\nDescription of the fix.",
+      "scope": "line",
+      "path": "path/to/file.go",
+      "side": "RIGHT",
+      "line": 42
+    }
+  ]
+}
+
+A line comment requires path, side, and line. A file comment requires path. Use "pull_request" for an issue without a specific location. Use RIGHT for the current version and LEFT for the base version.
+
+Use an empty comments array when no issues are found. Do not change source files, commit, or push.
+
+5. Final response
+
+After writing the consolidated review artifact, give the user a concise summary of the review findings in your final response. Summarize the key findings in severity order, with relevant file locations. If no actionable issues were found, say so explicitly. Briefly note any material gaps in review coverage or unresolved questions. Keep the findings summary consistent with {{artifact_path}}; it is in addition to, and does not replace, the required JSON artifacts.

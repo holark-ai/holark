@@ -1,0 +1,31 @@
+.comparison { min-width: 0; overflow: auto; background: var(--color-surface); color: var(--color-text); }
+.code { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; padding-bottom: 8px; font: 10px/22px var(--font-mono); tab-size: 4; }
+.row { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; }
+.cell { display: flex; min-width: 0; min-height: 22px; white-space: pre; }
+.cell[data-code-side='after'] { border-left: 1px solid var(--color-border); }
+.cell code { flex: 1; min-width: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; padding-right: 14px; }
+.lineNumber { flex-shrink: 0; min-width: 5ch; padding: 0 10px; text-align: right; color: var(--color-text-soft); user-select: none; }
+.marker { flex-shrink: 0; width: 14px; color: var(--color-text-soft); user-select: none; }
+.added { background: color-mix(in srgb, var(--color-success) 12%, transparent); }
+.removed { background: color-mix(in srgb, var(--color-danger) 12%, transparent); }
+.added .marker { color: var(--color-success); }
+.removed .marker { color: var(--color-danger); }
+.added .wordChange { background: color-mix(in srgb, var(--color-success) 25%, transparent); }
+.removed .wordChange { background: color-mix(in srgb, var(--color-danger) 25%, transparent); }
+.blank { background: var(--color-surface-subtle); }
+.context { grid-column: 1 / -1; padding: 4px 12px; color: var(--color-text-soft); background: var(--color-surface-subtle); }
+.context button { border: 0; padding: 2px 0; background: transparent; color: inherit; font: 11px/22px var(--font-sans); cursor: pointer; }
+.context button:hover { color: var(--color-text); }
+.noNewline { padding-right: 8px; color: var(--color-text-soft); user-select: none; }
+.inline .code { grid-template-columns: minmax(0, 1fr); }
+.inline .cell[data-code-side='after'] { border-left: 0; }
+.comment { color: #7f9c72; }
+.string { color: #ce9178; }
+.keyword { color: #569cd6; }
+.number { color: #b5cea8; }
+.type { color: #9cdcfe; }
+:global(:root[data-theme='light']) .comment { color: #008000; }
+:global(:root[data-theme='light']) .string { color: #a31515; }
+:global(:root[data-theme='light']) .keyword { color: #0000ff; }
+:global(:root[data-theme='light']) .number { color: #098658; }
+:global(:root[data-theme='light']) .type { color: #0451a5; }

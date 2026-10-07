@@ -1,0 +1,13 @@
+.content {
+  display: grid;
+  gap: 10px;
+}
+
+.error {
+  padding: 9px 10px;
+  border: 1px solid color-mix(in srgb, var(--color-danger) 35%, var(--color-border));
+  border-radius: var(--radius-sm);
+  color: var(--color-danger);
+  background: color-mix(in srgb, var(--color-danger) 8%, var(--color-surface));
+  font-size: 12px;
+}

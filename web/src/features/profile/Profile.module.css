@@ -1,0 +1,33 @@
+.profileLink { display: inline-flex; flex: 0 0 36px; width: 36px; height: 36px; align-items: center; justify-content: center; overflow: hidden; padding: 0; border: 1px solid var(--color-border); border-radius: 50%; color: var(--color-text-muted); background: var(--color-surface); line-height: 1; text-decoration: none; }
+.profileLink:hover, .profileLink[aria-current='page'] { color: var(--color-text); background: var(--color-surface-hover); }
+.profileLink:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+.profileLink svg { width: 15px; height: 15px; }
+.linkAvatar { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.page { max-width: 960px; margin: 0 auto; padding: 30px 32px 64px; }
+.pageHeader { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+.identity { min-width: 0; }
+.avatar { display: grid; flex: 0 0 64px; width: 64px; height: 64px; place-items: center; overflow: hidden; border-radius: 50%; color: var(--color-text-soft); background: var(--color-surface-raised); }
+.avatar svg { width: 23px; height: 23px; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.pageHeader h1 { margin: 0; font-size: 28px; font-weight: 650; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.pageHeader p { margin: 4px 0 0; color: var(--color-text-muted); font-size: 13px; overflow-wrap: anywhere; }
+.githubIdentity { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px; }
+.githubIdentity a { text-decoration: none; }
+.githubIdentity a:hover { text-decoration: underline; }
+.githubIdentity a:focus-visible, .sections a:focus-visible { border-radius: 2px; outline: 2px solid var(--color-focus-ring); outline-offset: 3px; }
+.pageHeader .profileStatus { color: var(--color-text-soft); font-size: 12px; }
+.syncProfile { display: grid; flex: 0 0 30px; width: 30px; height: 30px; place-items: center; margin-left: auto; padding: 0; border: 0; border-radius: var(--radius-sm); color: var(--color-text-muted); background: transparent; cursor: pointer; }
+.syncProfile:hover:not(:disabled) { color: var(--color-text); background: var(--color-surface-hover); }
+.syncProfile:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+.syncProfile:disabled { opacity: .4; cursor: default; }
+.syncProfile svg { width: 15px; height: 15px; }
+.sections { display: flex; flex-wrap: wrap; gap: 0 20px; border-bottom: 1px solid var(--color-border); }
+.sections a { display: inline-flex; align-items: center; gap: 7px; padding: 10px 0; border-bottom: 2px solid transparent; color: var(--color-text-muted); font-size: 13px; text-decoration: none; }
+.sections a[aria-current='page'] { border-bottom-color: var(--color-accent); color: var(--color-text); }
+.sections a:hover { color: var(--color-text); }
+.sections svg { width: 15px; height: 15px; }
+.emptyState { display: flex; min-height: 300px; flex-direction: column; align-items: center; justify-content: center; padding: 48px 20px; text-align: center; }
+.emptyIcon { width: 30px; height: 30px; margin-bottom: 16px; color: var(--color-text-soft); stroke-width: 1.5; }
+.comingSoon { padding: 3px 8px; border-radius: 999px; color: var(--color-text-muted); background: var(--color-surface-raised); font-size: 10px; font-weight: 600; }
+.emptyState h2 { margin: 12px 0 6px; font-size: 18px; font-weight: 600; }
+@media (max-width: 740px) { .page { padding: 24px 18px 48px; } .pageHeader { gap: 12px; } .pageHeader h1 { font-size: 24px; } .avatar { flex-basis: 52px; width: 52px; height: 52px; } .sections { gap: 0 16px; } }

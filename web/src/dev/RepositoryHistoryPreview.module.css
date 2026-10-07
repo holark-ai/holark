@@ -1,0 +1,7 @@
+.controls { position: fixed; z-index: 80; bottom: 8px; left: calc(var(--rail-width) + 12px); max-width: 320px; color: var(--color-text-muted); font-size: 11px; }
+.controls summary { cursor: pointer; padding: 6px 10px; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-surface); }
+.controls > div { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; padding: 12px; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-surface); }
+.controls p { margin: 0; line-height: 1.5; }
+.controls button, .controls select { padding: 5px 8px; border: 1px solid var(--color-border); border-radius: 5px; background: var(--color-surface); color: var(--color-text); font: inherit; }
+.controls button { cursor: pointer; }
+.controls button:disabled { opacity: .5; cursor: default; }

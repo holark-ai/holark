@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Harness version playground</title>
+<style>
+  :root { color-scheme: light dark; font: 13px system-ui, sans-serif; }
+  body { margin: 0; height: 100dvh; display: flex; flex-direction: column; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 4px 8px; background: light-dark(#f5f5f5, #202124); border-bottom: 1px solid #7776; }
+  #controls { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+  .harness { position: relative; display: flex; align-items: center; gap: 5px; }
+  label { white-space: nowrap; }
+  select, textarea, button { font: inherit; padding: 2px 5px; }
+  select { width: 155px; min-width: 0; }
+  textarea { width: 100%; box-sizing: border-box; resize: vertical; }
+  summary { cursor: pointer; font-size: 12px; }
+  .custom-input { position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 1; padding: 8px; border: 1px solid #7776; border-radius: 6px; background: light-dark(#f5f5f5, #202124); box-shadow: 0 4px 12px #0003; }
+  nav { display: flex; gap: 4px; align-items: center; margin-left: auto; }
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  #error { color: light-dark(#b42318, #ffb4ab); }
+  #error:empty { display: none; }
+  iframe { flex: 1; width: 100%; min-height: 0; border: 0; background: white; }
+</style>
+<header aria-label="Harness version playground" title="Change discovery inputs to explore the real application. Launches use real installed CLIs.">
+  <div id="controls"></div>
+  <nav><button id="settings">Settings</button><button id="workspace">Workspace</button><span id="status" role="status"></span><span id="error" role="alert"></span></nav>
+</header>
+<iframe id="app" title="Holark application" src="/settings"></iframe>
+<script>
+  const frame = document.querySelector('#app');
+  const status = document.querySelector('#status');
+  const error = document.querySelector('#error');
+  const endpoint = '/__e2e/harness-inputs';
+  const harnesses = [['codex', 'Codex', 'codex'], ['claude', 'Claude Code', 'claude-code'], ['opencode', 'OpenCode', 'opencode']];
+  const presets = [['supported', 'Supported'], ['old', 'Too old'], ['new', 'Too new'], ['prerelease', 'Prerelease'], ['unknown', 'Unrecognized output'], ['failed', 'Version command failed'], ['missing', 'Not installed'], ['installed', 'Actual installation']];
+  const wrap = (executable, version) => executable === 'codex' ? 'codex-cli ' + version : executable === 'claude' ? version + ' (Claude Code)' : version;
+  document.querySelector('#settings').onclick = () => frame.src = '/settings';
+  document.querySelector('#workspace').onclick = () => frame.src = '/';
+  async function checked(response) { if (!response.ok) throw new Error(await response.text()); return response.json(); }
+  async function apply(executable, mode, output) {
+    error.textContent = '';
+    document.querySelectorAll('#controls input, #controls select, #controls button, #controls textarea').forEach(element => element.disabled = true);
+    try {
+      await checked(await fetch(endpoint, {method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({executable, mode, output})}));
+      frame.contentWindow.location.reload();
+      status.textContent = 'Discovery inputs updated.';
+    } catch (reason) { error.textContent = reason.message; }
+    finally { document.querySelectorAll('#controls input, #controls select, #controls button, #controls textarea').forEach(element => element.disabled = false); }
+  }
+  async function init() {
+    const [inputs, capabilities] = await Promise.all([fetch(endpoint).then(checked), fetch('/api/v1/agent-capabilities').then(checked)]);
+    for (const [executable, label, type] of harnesses) {
+      const target = capabilities.capabilities.find(item => item.type === type).latest_supported_version;
+      const outputs = {supported: wrap(executable, target), old: wrap(executable, '0.0.0'), new: wrap(executable, '999.0.0'), prerelease: wrap(executable, target + '-beta.1'), unknown: 'development snapshot'};
+      const box = document.createElement('div'); box.className = 'harness';
+      const name = document.createElement('label'); name.textContent = label; name.htmlFor = executable + '-scenario'; box.append(name);
+      const select = document.createElement('select'); select.id = name.htmlFor; select.setAttribute('aria-label', label + ' scenario');
+      for (const [value, text] of presets) select.add(new Option(text, value));
+      const customOption = new Option('Custom output', 'custom'); customOption.disabled = true; select.add(customOption);
+      select.value = inputs[executable].mode === 'output' ? Object.keys(outputs).find(key => outputs[key] === inputs[executable].output) || 'custom' : inputs[executable].mode;
+      box.append(select);
+      const details = document.createElement('details'); details.name = 'custom-discovery'; const summary = document.createElement('summary'); summary.textContent = 'Custom'; summary.setAttribute('aria-label', label + ' custom discovery input'); details.append(summary);
+      const panel = document.createElement('div'); panel.className = 'custom-input'; details.append(panel);
+      const raw = document.createElement('textarea'); raw.rows = 2; raw.setAttribute('aria-label', label + ' raw version output'); raw.value = inputs[executable].output;
+      panel.append(raw);
+      const applyCustom = document.createElement('button'); applyCustom.textContent = 'Apply output'; applyCustom.onclick = () => { select.value = 'custom'; void apply(executable, 'output', raw.value); }; panel.append(applyCustom);
+      box.append(details); document.querySelector('#controls').append(box);
+      select.onchange = () => {
+        const choice = select.value;
+        const mode = ['missing', 'failed', 'installed'].includes(choice) ? choice : 'output';
+        raw.value = outputs[choice] || '';
+        void apply(executable, mode, raw.value);
+      };
+    }
+  }
+  init().catch(reason => error.textContent = reason.message);
+</script>
+</html>

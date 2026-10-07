@@ -1,0 +1,29 @@
+/* Keep the final row and retry action scrollable above the floating composer. */
+.history { position: relative; flex: 1; min-height: 0; overflow: auto; scrollbar-width: thin; padding-right: 5px; padding-bottom: 88px; scroll-padding-top: 32px; scroll-padding-bottom: 88px; }
+.day { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: 6px; margin: 0; padding: 7px 8px 7px 2px; background: var(--color-surface); color: var(--color-text-muted); font: inherit; font-size: 12px; font-weight: 400; line-height: 16px; }
+.count { opacity: .7; margin-left: auto; font-variant-numeric: tabular-nums; }
+.commit { position: relative; width: 100%; min-height: 51px; display: grid; grid-template-columns: minmax(0, 1fr) 34px; align-items: start; gap: 12px; border: 0; padding: 6px 8px 6px 10px; background: transparent; color: var(--color-text-muted); text-align: left; cursor: pointer; }
+.commit:hover, .commit[data-selected='true'] { color: var(--color-text); }
+.selectionMarker { position: absolute; left: 2px; top: 0; width: 2px; background: var(--color-text); pointer-events: none; transition: transform 160ms ease-out, height 160ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .selectionMarker { transition: none; } }
+.commit:hover .commitMeta, .commit:hover time, .commit[data-selected='true'] time { color: var(--color-text); }
+.commitSelect { min-width: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.commitSelect::after { content: ''; position: absolute; inset: 0; }
+.commitSelect:focus-visible { outline-offset: -2px; }
+.commitLink { position: relative; flex: none; padding: 0; border: 0; background: transparent; color: inherit; line-height: inherit; cursor: pointer; }
+.commitLink:hover code { color: var(--color-text); text-decoration: underline; text-underline-offset: 2px; }
+.commit time { grid-column: 2; grid-row: 1; padding-top: 2px; color: var(--color-text-muted); text-align: right; font-size: 10px; font-variant-numeric: tabular-nums; }
+.commitContent { grid-column: 1; grid-row: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.commitMeta { display: flex; align-items: center; gap: 5px; min-width: 0; color: var(--color-text-muted); font-size: 11px; line-height: 16px; }
+.commitMeta code { flex: none; font: 10px var(--font-mono); }
+.author { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pullRequest { flex: none; }
+.subject { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 400; line-height: 18px; }
+.state { padding: 12px 0; color: var(--color-text-muted); font-size: 12px; }
+@media (max-width: 720px) { .history { flex: none; height: 360px; max-height: 50dvh; } }
+.panel { position: relative; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.panel[data-more-below='true']::after { content: ''; position: absolute; bottom: 0; left: 0; right: 12px; height: 24px; background: linear-gradient(transparent, var(--color-surface)); pointer-events: none; z-index: 2; }
+
+.newCommits, .state button { border: 1px solid var(--color-border); border-radius: 5px; padding: 5px 8px; background: var(--color-surface); color: var(--color-text-muted); font: inherit; font-size: 11px; cursor: pointer; }
+.newCommits { margin: 8px 0; align-self: flex-start; }
+.newCommits:hover, .state button:hover { background: var(--color-surface-subtle); }

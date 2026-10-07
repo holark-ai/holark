@@ -1,0 +1,31 @@
+Rebase the current prepared worktree from source commit {{source_commit}} onto exact target commit {{target_base_commit}} ({{base_branch}}).
+The published PR branch {{head_branch}} identifies the work; do not check it out.
+Do not fetch, query GitHub, switch branches or worktrees, or push.
+Report any local preparation mismatch without investigating remotely.
+
+1. Create a backup branch from HEAD named
+backup/{{head_branch}}-before-rebase-<timestamp>.
+
+2. Review the changes on both branches since their merge base to understand
+this branch’s intent and what changed upstream during its development.
+
+3. Run git rebase {{target_base_commit}}.
+
+4. Resolution guidance:
+- Preserve this branch’s intended behavior wherever possible.
+- Integrate relevant upstream changes so the result is compatible with
+  the target codebase.
+- Avoid unnecessarily reverting changes from either side.
+
+If a conflict is straightforward, resolve it and continue the rebase.
+If a conflict is non-trivial and/or requires assumptions about intended behavior, stop and ask for guidance before making assumptions. Explain concisely in plain English: what conflicts, the options, their practical consequences, and your recommendation.
+
+5. After the rebase, run relevant checks. Fix failures caused by the rebase;
+ask for guidance using the same approach if the intended behavior is unclear.
+
+6. Commit any changes left by conflict resolution or follow-up fixes. Do not push or publish.
+Delete the backup branch only if the rebase and checks succeed without
+requiring user guidance.
+Summarize the notable upstream changes and conflict resolutions.
+
+7. When you are finished, signal completion by creating an empty file at {{artifact_path}}. This gitignored marker lets Holark know that the rebase is complete. Leave it absent if you are asking for guidance, and do not commit it.

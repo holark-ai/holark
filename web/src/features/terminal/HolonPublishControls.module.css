@@ -1,0 +1,27 @@
+.commit { padding: 4px 12px 12px; color: var(--appearance-accent, #796293); }
+.commit > button, .commitActions button { border: 0; background: transparent; color: inherit; font-size: 10px; padding: 5px 0; cursor: pointer; }
+.commit label { display: block; margin-bottom: 5px; color: var(--appearance-soft, #95899e); font-size: 10px; }
+.commit textarea { width: 100%; min-height: 76px; resize: vertical; padding: 8px; border: 1px solid var(--appearance-border, #e6dfed); border-radius: 7px; font: 11px/1.6 var(--font-sans); background: var(--appearance-surface, #fff); color: var(--appearance-muted, #62556d); }
+.commitActions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.commitActions svg { width: 13px; height: 13px; }
+.commitActions .validate { border-radius: 999px; padding: 4px 10px; background: var(--appearance-accent-soft, #eee8f6); }
+.commitActions .validate:hover:not(:disabled) { background: var(--appearance-accent-soft, #e5deee); }
+.commit button:disabled { opacity: .45; cursor: default; }
+.publish { flex-shrink: 0; margin-top: auto; padding: 14px 16px; border-top: 1px solid var(--appearance-border, #eeeaf2); color: var(--appearance-soft, #8b8b93); font-size: 11px; text-align: center; }
+.publish small { display: block; margin-bottom: 8px; font-size: 10px; text-align: left; }
+.split { position: relative; display: flex; }
+.split > button { display: grid; place-items: center; padding: 8px; border: 0; background: var(--color-accent); color: var(--color-text-on-accent); cursor: pointer; border-radius: 0 7px 7px 0; }
+.split .primary { flex: 1; min-width: 0; border-radius: 7px 0 0 7px; font-size: 12px; line-height: 18px; }
+.split .primary:only-child { border-radius: 7px; }
+.split > button + button { width: 30px; border-left: 1px solid #ffffff30; }
+.split > button:hover:not(:disabled) { background: var(--color-accent-dark); }
+.split > button:disabled { opacity: .7; cursor: default; }
+.split.neutral > button { background: var(--color-text); color: var(--color-surface); }
+.split.neutral > button + button { border-left-color: color-mix(in srgb, var(--color-surface) 25%, transparent); }
+.split.neutral > button:hover:not(:disabled) { background: color-mix(in srgb, var(--color-text) 85%, var(--color-surface)); }
+.split svg { width: 13px; height: 13px; }
+.options { bottom: calc(100% + 6px); left: 0; right: 0; z-index: 10; }
+.neutral .options button { color: var(--color-text); }
+.neutral .options button:hover:not(:disabled) { background: var(--color-surface-hover); }
+
+.commitHint { margin: 8px 0 0; color: var(--appearance-soft, #95899e); font-size: 10px; line-height: 1.5; }

@@ -1,0 +1,7 @@
+Holark detected uncommitted changes from the completed turn.
+
+Please inspect the changes with git status and git diff.
+Then propose a concise commit message.
+Ask me whether to commit with that message, revise it, or dismiss and leave the changes uncommitted.
+Do not modify source files unless I explicitly ask for more code changes.
+If I approve, create the commit.

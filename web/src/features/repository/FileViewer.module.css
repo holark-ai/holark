@@ -1,0 +1,27 @@
+.viewer {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 72px;
+  overflow-x: auto;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.lineNumbers, .content {
+  margin: 0;
+  padding: 14px 16px;
+  font: 12px/22px SFMono-Regular, Consolas, Liberation Mono, monospace;
+  tab-size: 4;
+}
+.lineNumbers {
+  position: sticky;
+  left: 0;
+  flex-shrink: 0;
+  min-width: 4ch;
+  background: var(--color-surface);
+  color: var(--color-text-soft);
+  text-align: right;
+  user-select: none;
+}
+.content { flex: 1; padding-left: 8px; }
+.content code { font: inherit; }

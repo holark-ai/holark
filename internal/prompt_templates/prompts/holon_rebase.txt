@@ -1,0 +1,35 @@
+Rebase the current worktree on workspace branch {{source_branch}} onto exact commit {{target_commit}}.
+Publication branch {{target_branch}} is context; do not check it out.
+Do not fetch, query GitHub, switch branches or worktrees, or push.
+Report any local preparation mismatch without investigating remotely.
+
+Create a backup branch from HEAD named
+backup/{{source_branch}}-before-rebase-<timestamp>.
+
+Review the changes on both branches since their merge base to understand
+this branch’s intent and what changed upstream during its development.
+
+Run git rebase {{target_commit}}.
+
+Resolve straightforward conflicts and continue the rebase:
+- Preserve this branch’s intended behavior wherever possible.
+- Integrate relevant upstream changes so the result is compatible with
+  the target codebase.
+- Avoid unnecessarily reverting changes from either side.
+
+If resolving a conflict requires assumptions about intended behavior,
+stop and ask for guidance. Explain the decision briefly in plain English,
+with enough context to resume this workstream: what conflicts, the options,
+their practical consequences, and your recommendation.
+
+After the rebase, run relevant checks. Fix failures caused by the rebase;
+ask for guidance using the same approach if the intended behavior is unclear.
+
+Delete the backup branch only if the rebase and checks succeed without
+requiring user guidance.
+
+Summarize the notable upstream changes, conflict resolutions, and check results.
+
+Do not push or publish.
+
+Finish on {{source_branch}} with a clean workspace. Preserve existing Holark control artifacts, including .holark/comment-reply.json; do not create a completion artifact. Other tabs share this workspace.

@@ -1,0 +1,72 @@
+.syncActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.syncButton svg {
+  animation: syncSpin 1.2s linear infinite;
+}
+
+.syncResult {
+  --sync-color: var(--color-success);
+  --sync-background: var(--color-success-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: 5px 7px 5px 10px;
+  border: 1px solid color-mix(in srgb, var(--sync-color) 25%, transparent);
+  border-radius: var(--radius-sm);
+  color: var(--sync-color);
+  background: var(--sync-background);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.syncResult > svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.syncResultDismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.syncResultDismiss:hover,
+.syncResultDismiss:focus-visible {
+  background: color-mix(in srgb, var(--sync-color) 15%, transparent);
+}
+
+.syncResultDismiss svg { width: 14px; height: 14px; }
+
+@keyframes syncSpin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .syncButton svg { animation: none; }
+}
+
+.syncWarning {
+  --sync-color: var(--color-warning);
+  --sync-background: var(--color-warning-soft);
+}
+
+@media (max-width: 720px) {
+  .syncActions { justify-content: flex-start; }
+}

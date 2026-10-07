@@ -1,0 +1,19 @@
+Inspect the changes and commit messages introduced by this branch since commit {{base_commit}} and write a PR title and description. Make the description as concise as possible while including the information necessary to understand and review the change. Use additional detail only when warranted by the change's size or complexity. Assume the reviewer has very limited attention and use simple phrasing.
+
+Structure the description using these sections when applicable:
+
+`## Context`
+Explain why this PR exists: the problem, limitation, or user need it addresses and why it matters. Describe the situation before this change and the desired outcome—not what was implemented. Omit this section if the motivation is not supported by the available evidence.
+
+`## Summary`
+Summarize the important changes at a high level, focusing on behavior, user-visible effects, and meaningful architectural changes. Use the clearest concise format; when applicable, prefer compact ASCII diagrams > bullet points > prose.
+
+`## Design choices`
+Include this only when the changes show that meaningful alternatives or trade-offs were considered. For each, briefly explain the choice and its rationale.
+
+Write exactly one UTF-8 JSON object to {{artifact_path}} using this schema:
+
+{
+  "title": "<non-empty string, at most {{max_title_characters}} characters>",
+  "description": "<Markdown string, at most {{max_description_characters}} characters>"
+}

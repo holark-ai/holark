@@ -1,0 +1,66 @@
+@import './tokens.css';
+
+* { box-sizing: border-box; }
+
+html, body, #root { min-width: 360px; min-height: 100%; margin: 0; }
+
+html { background: var(--color-bg); }
+
+/* Shared overlay thumb: 6px of color inside a 14px drag target. */
+:root :is([data-overlay-scrollbar-thumb], .xterm .xterm-scrollable-element > .scrollbar.vertical > .slider) {
+  box-sizing: border-box;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background-color: var(--overlay-scrollbar-thumb);
+  background-clip: padding-box;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+:root :is([data-scrolling] [data-overlay-scrollbar-thumb], [data-scrolling] .xterm .scrollbar.vertical > .slider),
+:root :is([data-overlay-scrollbar-thumb], .xterm .xterm-scrollable-element > .scrollbar.vertical > .slider):is(:hover, :active, .active) {
+  opacity: 1;
+  transition-delay: 0ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root :is([data-overlay-scrollbar-thumb], .xterm .xterm-scrollable-element > .scrollbar.vertical > .slider) {
+    transition-duration: 0ms;
+  }
+}
+:root :is([data-overlay-scrollbar-thumb], .xterm .xterm-scrollable-element > .scrollbar.vertical > .slider):hover {
+  background-color: var(--overlay-scrollbar-thumb-hover);
+}
+:root :is([data-overlay-scrollbar-thumb], .xterm .xterm-scrollable-element > .scrollbar.vertical > .slider):is(:active, .active) {
+  background-color: var(--overlay-scrollbar-thumb-active);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+
+:where(:focus-visible) {
+  outline: 1px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+::selection { background: var(--color-selection); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
